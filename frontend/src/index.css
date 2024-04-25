@@ -1,0 +1,19 @@
+/* for all html elements */
+/* this all for our complete peoj */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+/* in this file for whole proj - this class in app.js so all components come there so auto apply */
+.app {
+  width: 80%;
+  margin: auto;
+}
