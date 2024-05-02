@@ -1,0 +1,14 @@
+/* map applied over it so that all  */
+.food_display_list {
+  /* displpay:flex all aligs in single row and scroller comes to end for col give flexdirec col  */
+  /* ow to align in multples rows with in a single page */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  margin-top: 30px;
+  gap: 30px;
+  row-gap: 50px;
+}
+.food_display h2 {
+  font-size: max(2vw, 24px);
+  font-weight: 600;
+}

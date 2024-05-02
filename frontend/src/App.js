@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import { Routes, Route } from "react-router-dom";
 const App = () => {
+  const [category, setCategory] = useState("all");
   return (
     <div className="app">
       <Navbar></Navbar>
