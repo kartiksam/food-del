@@ -15,6 +15,7 @@ const ExploreMenu = ({ category, setCategory }) => {
         {menu_list.map((item, index) => {
           return (
             <div
+              //setCategory((prev)) not a function its a state and we can use this prev to add or remove or compare prev value of state it s const[category,setCategory]=useState("all") not a fucn but behave and take arg asn a func take pare onclick={()=>func nameor state name} else onClick={setCategory("sdalad")} or onclick={()=>funcname(arg)}
               onClick={() =>
                 setCategory((prev) =>
                   prev === item.menu_name ? "all" : item.menu_name

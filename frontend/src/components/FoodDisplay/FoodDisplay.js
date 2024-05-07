@@ -11,16 +11,18 @@ const FoodDisplay = ({ category }) => {
       {/* to make all in one page will give css to this */}
       <div className="food_display_list">
         {food_list.map((item, index) => {
-          return (
-            <FoodItem
-              key={index}
-              id={item.id}
-              name={item.name}
-              description={item.description}
-              price={item.price}
-              image={item.image}
-            ></FoodItem>
-          );
+          if (category === "all" || category === item.category) {
+            return (
+              <FoodItem
+                key={index}
+                id={item.id}
+                name={item.name}
+                description={item.description}
+                price={item.price}
+                image={item.image}
+              ></FoodItem>
+            );
+          }
         })}
       </div>
     </div>
