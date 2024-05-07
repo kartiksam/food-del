@@ -1,0 +1,49 @@
+/* Footer container */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333; /* Change the background color as needed */
+  color: #fff; /* Text color */
+  padding: 30px;
+}
+
+/* Footer sections */
+.footer_left,
+.middle,
+.right {
+  flex: 1;
+}
+
+/* Logo */
+.logo {
+  width: 100px; /* Adjust the width as needed */
+  margin-bottom: 20px;
+}
+
+/* Social media icons */
+.logos p {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Middle and right sections */
+.middle,
+.right {
+  text-align: center;
+}
+
+/* Links */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Header styles */
+h1,
+h2 {
+  margin-bottom: 20px;
+}
