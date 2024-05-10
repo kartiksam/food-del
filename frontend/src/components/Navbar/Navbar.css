@@ -55,3 +55,46 @@
   top: -8px;
   right: -8px;
 }
+/* to make it responsive after all css dddddddddddddddddddddne chk to responsive */
+@media (max-width: 1050px) {
+  .navbar .logo {
+    width: 140px;
+  }
+  .navbar-menu {
+    gap: 20px;
+    font-size: 17px;
+  }
+  .right {
+    gap: 30px;
+  }
+  .right img {
+    width: 22px;
+  }
+  .right button {
+    padding: 8px 25px;
+  }
+}
+@media (max-width: 900px) {
+  .navbar .logo {
+    width: 120px;
+  }
+  .navbar-menu {
+    gap: 15px;
+    font-size: 16px;
+  }
+  .right {
+    gap: 20px;
+  }
+  .right img {
+    width: 20px;
+  }
+  .right button {
+    padding: 7px 20px;
+    font-size: 15px;
+  }
+}
+@media (max-width: 750px) {
+  .navbar-menu {
+    display: none;
+  }
+}
