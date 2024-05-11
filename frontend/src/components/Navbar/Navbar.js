@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
-const Navbar = () => {
+const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   return (
     <div className="navbar">
@@ -40,7 +40,8 @@ const Navbar = () => {
           <img src={assets.basket_icon} alt="basket"></img>
           <div className="dot"></div>
         </div>
-        <button>sign in</button>
+        {/* or wqe can do onclicl={fnname}or {()=>fnname(arg)} or {()=>setshowlogin(arg)=>arg+1} or apply <Link to="/login" anmd in app.js define login rpoute and open this componentr  */}
+        <button onClick={() => setShowLogin(true)}>sign in</button>
       </div>
     </div>
   );

@@ -5,18 +5,23 @@ import Cart from "./pages/Cart/Cart";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
+import LoginPop from "./components/LoginPopup/LoginPop";
 const App = () => {
-  const [category, setCategory] = useState("all");
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
-    <div className="app">
-      <Navbar></Navbar>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/order" element={<PlaceOrder />} />
-      </Routes>
-      <Footer></Footer>
-    </div>
+    <>
+      {showLogin ? <LoginPop setShowLogin={setShowLogin} /> : <></>}
+      <div className="app">
+        <Navbar setShowLogin={setShowLogin}></Navbar>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order" element={<PlaceOrder />} />
+        </Routes>
+        <Footer></Footer>
+      </div>
+    </>
   );
 };
 
