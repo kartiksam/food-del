@@ -1,0 +1,62 @@
+/* this one is main all wrap in this  */
+.login {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: #00000090;
+  display: grid;
+}
+/* this for form all content isnide form so applioed overall form all inputs and etc and for individual inputs and btn styling use their individual classname like - div cn and in this 3 inputs either we can give this cn display:flex so all inputs in row but want all inputs styling use cn inputs{ and giv css at one time all three willls tyle } only cn{use when display and others want to display all isede}  */
+.login-popup-container {
+  place-self: center;
+  width: max(23vw, 330px);
+  color: #808080;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 25px 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  animation: fadeIn 0.5s;
+}
+/* like thuis it was coveerred in form tag styling but we have onre div to img and other heading so we can give specific styling to it given flex both sep if want to give stylimng ind tag do by*/
+.login-popup-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+}
+.login-popup-title img {
+  width: 16px;
+  cursor: pointer;
+}
+.login-popup-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.login-popup-inputs input {
+  outline: none;
+  border: 1px solid #c9c9c9;
+  padding: 10px;
+  border-radius: 4px;
+}
+.login-popup-container button {
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  color: white;
+  background-color: tomato;
+  font-size: 15px;
+  cursor: pointer;
+}
+.login-popup-condition input {
+  margin-top: 5px;
+}
+.login p span {
+  color: tomato;
+  font-weight: 500;
+  cursor: pointer;
+}

@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
+import { Link } from "react-router-dom";
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   return (
     <div className="navbar">
       {/* either here also can use div classname =left but anyhow */}
-      <img src={assets.logo} alt="logo " className="logo"></img>
+      <Link to="/">
+        <img src={assets.logo} alt="logo " className="logo"></img>
+      </Link>
       <ul className="navbar-menu">
         {/* to make underline in one of at a time so that snd chnhe using set functiononClick={()=>setMenu("home")} */}
         <li
@@ -37,7 +40,9 @@ const Navbar = ({ setShowLogin }) => {
       <div className="right">
         <img src={assets.search_icon} alt="search"></img>
         <div className="navbar-search-icon">
-          <img src={assets.basket_icon} alt="basket"></img>
+          <Link to="/cart">
+            <img src={assets.basket_icon} alt="basket"></img>
+          </Link>
           <div className="dot"></div>
         </div>
         {/* or wqe can do onclicl={fnname}or {()=>fnname(arg)} or {()=>setshowlogin(arg)=>arg+1} or apply <Link to="/login" anmd in app.js define login rpoute and open this componentr  */}

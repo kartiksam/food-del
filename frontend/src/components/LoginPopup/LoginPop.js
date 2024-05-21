@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./LoginPopup.css";
 import { assets } from "../../assets/assets";
 const LoginPop = ({ setShowLogin }) => {
-  const [currState, setCurrState] = useState("Sign Up");
+  const [currState, setCurrState] = useState("Login");
   return (
     <div className="login" id="login">
       <form className="login-popup-container">
@@ -15,7 +15,7 @@ const LoginPop = ({ setShowLogin }) => {
           ></img>
         </div>
         <div className="login-popup-inputs">
-          {currState === "login" ? (
+          {currState === "Login" ? (
             <></>
           ) : (
             <input type="text" placeholder="Your Name" required />
@@ -28,12 +28,13 @@ const LoginPop = ({ setShowLogin }) => {
           <input type="checkbox" required />
           <p>By continuing, i agree to the terms of use & privacy policy</p>
         </div>
-        {currState === "login" ? (
+        {currState === "Login" ? (
           <p>
             Create a new account?
             <span onClick={() => setCurrState("Sign Up")}>Click here</span>
           </p>
         ) : (
+          // we can apply on click on anything like img text and others or <Link to=route> on anything we click go to that route
           <p>
             Already have an account?
             <span onClick={() => setCurrState("Login")}>Login here</span>
