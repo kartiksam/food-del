@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
+import { Link } from "react-router-dom";
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
+    useContext(StoreContext);
   return (
     <div className="cart">
       {/* this div for cart items upper  */}
@@ -39,12 +41,13 @@ const Cart = () => {
         })}
       </div>
       <div className="cart-bottom">
+        {/* this cart-bottom main class includes cart totla and cart promocode flex apply to these if want individual then select thta class */}
         <div className="cart-total">
-          <h2>cart total</h2>
+          <h2>Cart Totals</h2>
           <div>
             <div className="cart-total-details">
               <p>subtotal</p>
-              <p>{0}</p>
+              <p>${getTotalCartAmount()}</p>
             </div>
             <hr />
             <div className="cart-total-details">
@@ -54,14 +57,16 @@ const Cart = () => {
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>{0}</b>
+              <b>${getTotalCartAmount() + 2}</b>
             </div>
           </div>
-          <button>Proceed To Checkout</button>
+          <Link to="/order">
+            <button>Proceed To Checkout</button>
+          </Link>
         </div>
         <div className="cart-promocode">
           <div>
-            <p>If you have a promo code,Enter it here</p>
+            <p>If you have a promo code, Enter it here</p>
             <div className="cart-promocode-input">
               <input type="text" placeholder="promo-code"></input>
               <button>Submit</button>
