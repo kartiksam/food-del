@@ -21,6 +21,8 @@ connnectDB();
 //api endpoint
 
 app.use("/api/food", foodRouter);
+//mount the folder in this endpoint insert anyfile in this folder and use that using this url images and filename
+app.use("/images", express.static("uploads"));
 
 //http method
 //- get method is http method using that we can request the data from the server

@@ -1,0 +1,24 @@
+/* outfit font on google search*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@100..900&display=swap");
+/* css properties for all the elements */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Outfit;
+}
+body {
+  min-width: 100vh;
+  background-color: #fcfcfc;
+}
+/* css propertied for all links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+hr {
+  border: none;
+  height: 1px;
+  background-color: #a9a9a9;
+}
