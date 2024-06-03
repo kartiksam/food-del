@@ -5,9 +5,13 @@ import { Routes, Route } from "react-router-dom";
 import Add from "./pages/Add/Add";
 import Order from "./pages/Order/Order";
 import List from "./pages/List/List";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   return (
     <div>
+      <ToastContainer></ToastContainer>
+      {/* navbar and side bhar and foter always and these pages accordign to routes so to make space below navbar we have given margin top ,left */}
       <Navbar></Navbar>
       <hr />
       <div className="app-content">

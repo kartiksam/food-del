@@ -21,7 +21,7 @@ connnectDB();
 //api endpoint
 
 app.use("/api/food", foodRouter);
-//mount the folder in this endpoint insert anyfile in this folder and use that using this url images and filename
+//mount the folder in this endpoint insert anyfile in this folder and use that using this url images and filename-localhost:4000/images/filename
 app.use("/images", express.static("uploads"));
 
 //http method
