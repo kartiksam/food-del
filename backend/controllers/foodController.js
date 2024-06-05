@@ -33,12 +33,13 @@ const listFood = async (req, res) => {
 // remove food item
 const removeFood = async (req, res) => {
   try {
+    // here only need to pass the id that are getting from body not name:req.body.name
     const food = await foodModel.findById(req.body.id);
     //to delete imagesd from folder  -images is the property
     fs.unlink(`uploads/${food.image}`, () => {});
     //to delte from the database
     await foodModel.findByIdAndDelete(req.body.id);
-    res.json({ sucess: true, message: "Food Removed" });
+    res.json({ success: true, message: "Food Removed" });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Error" });
