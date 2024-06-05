@@ -1,23 +1,5 @@
-/* used at two places apllied to both and with one plce with this classname one more clas sused if want another style can apllied using that class that will aplly to only that part thats why in one case used one xtra class to seperate
-.list-table-format {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 0.5fr;
-  align-items: center;
-
-  padding: 12pc 15px;
-  border: 1px solid #cacaca;
-  font-size: 13px;
-}
-/* only applied with title not to both*/
-.list-table-format .title {
-  background-color: #f9f9f9;
-}
-.list-table-format img {
-  width: 50px;
-}
-*/
 /* List.css */
-
+/* main thing to stay htlml srtucture and proper provide div with classnames use as muc div with to seaparte things and to make cooab of thi ngs ogether one div for outer and insi=de many small divs and then give csss property from here or chat gpt any lenght no limit display flex,grid  flex-direction -cols */
 .list {
   width: 100%;
   padding: 20px;
@@ -42,8 +24,8 @@
 }
 
 .list-table-format {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 70px 1fr 20px 1fr 1fr 1fr;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ccc;
@@ -62,11 +44,27 @@
 
 .list-table-format p {
   margin: 0;
-  flex: 1;
   text-align: center;
 }
 
 .list-table-format b {
-  flex: 1;
   text-align: center;
+}
+.list-table-format {
+  display: grid;
+  grid-template-columns: 70px 1fr 20px 1fr 1fr 1fr;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.list-table-format:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.cursor {
+  cursor: pointer;
 }

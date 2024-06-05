@@ -38,7 +38,7 @@ const List = () => {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>${item.price}</p>
-              <p>x</p>
+              <p className="cursor">x</p>
             </div>
           );
         })}
