@@ -36,7 +36,7 @@
   background-color: #fff4f2;
 }
 /* underline efect */
-.navbar .active {
+.navbar.active {
   padding-bottom: 2px;
   border-bottom: 2px solid #49557e;
 }
@@ -47,7 +47,7 @@
 .navbar-search-icon {
   position: relative;
 }
-.navbar-search-icon .dot {
+.navbar-search-icon.dot {
   position: absolute;
   min-width: 10px;
   min-height: 10px;
@@ -58,7 +58,7 @@
 }
 /* to make it responsive after all css dddddddddddddddddddddne chk to responsive */
 @media (max-width: 1050px) {
-  .navbar .logo {
+  .navbar.logo {
     width: 140px;
   }
   .navbar-menu {
@@ -76,7 +76,7 @@
   }
 }
 @media (max-width: 900px) {
-  .navbar .logo {
+  .navbar.logo {
     width: 120px;
   }
   .navbar-menu {

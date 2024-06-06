@@ -5,6 +5,9 @@ import express from "express";
 import cors from "cors";
 import { connnectDB } from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js";
+import userRouter from "./routes/userRoute.js";
+// to support env file
+import "dotenv/config";
 //app config
 const app = express();
 const port = 4000;
@@ -21,6 +24,7 @@ connnectDB();
 //api endpoint
 
 app.use("/api/food", foodRouter);
+app.use("/api/user", userRouter);
 //mount the folder in this endpoint insert anyfile in this folder and use that using this url images and filename-localhost:4000/images/filename
 app.use("/images", express.static("uploads"));
 
