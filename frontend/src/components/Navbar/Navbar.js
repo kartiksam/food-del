@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
-  const { getTotalCartAmount } = useContext(StoreContext);
+  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+
   return (
     <div className="navbar">
       {/* either here also can use div classname =left but anyhow */}
@@ -48,7 +49,25 @@ const Navbar = ({ setShowLogin }) => {
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
         {/* or wqe can do onclicl={fnname}or {()=>fnname(arg)} or {()=>setshowlogin(arg)=>arg+1} or apply <Link to="/login" anmd in app.js define login rpoute and open this componentr  */}
-        <button onClick={() => setShowLogin(true)}>sign in</button>
+        {/* here is logic for if we have token then remove signib tn and show user profile there */}
+        {!token ? (
+          <button onClick={() => setShowLogin(true)}>sign in</button>
+        ) : (
+          <div className="navbar-profile">
+            <img src={assets.profile_icon} alt="profile link"></img>
+            <ul className="nav-profile-dropdown">
+              <li>
+                <img src={assets.bag_icon} alt="bagicon"></img>
+                <p>Orders</p>
+              </li>
+              <hr />
+              <li>
+                <img src={assets.logout_icon} alt="logouticon"></img>
+                <p>Logout</p>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,28 +1,64 @@
 /* where classes given auto that material adjust in bet  for div classes not others*/
 .navbar {
-  padding: 20px 0px;
   display: flex;
+  margin-top: 2%;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
+  background-color: #fff; /* Adjust as needed */
 }
-/* or .navbar .logo=.logo */
-.logo {
-  width: 150px;
-  margin-right: 20px;
+
+.navbar .logo {
+  flex: 0 0 auto; /* Prevents the logo from growing or shrinking */
 }
+
 .navbar-menu {
-  display: flex;
   list-style: none;
-  gap: 20px;
-  color: #49557e;
-  font-size: 18px;
+  display: flex;
+  gap: 20px; /* Adjust spacing between menu items as needed */
+  margin: 0;
+  padding: 0;
+  flex: 3;
+  justify-content: center;
+}
+
+.navbar-menu li {
+  cursor: pointer;
+}
+
+.navbar-menu li.active {
+  text-decoration: underline;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjust spacing between right items as needed */
 }
 .right {
-  align-items: center;
-  gap: 40px;
   display: flex;
-  /* display flex to align one by one in row */
+  justify-content: flex-end; /* Aligns the items to the right */
+  align-items: center;
+  gap: 20px; /* Adjust spacing between right items as needed */
+  flex: 0 0 auto;
+  padding-right: 20px; /* Adds padding to the right side */
 }
+.right img,
+.right .navbar-search-icon,
+.right button {
+  flex: 0 0 auto; /* Prevents the elements from growing or shrinking */
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .navbar button {
   background: transparent;
   font-size: 16px;
@@ -32,9 +68,7 @@
   border-radius: 50px;
   cursor: pointer;
 }
-.navbar button:hover {
-  background-color: #fff4f2;
-}
+
 /* underline efect */
 .navbar.active {
   padding-bottom: 2px;
@@ -44,10 +78,10 @@
   cursor: pointer;
 }
 /* for dot to make visible on basket */
-.navbar-search-icon {
-  position: relative;
+.navbar button:hover {
+  background-color: #fff4f2;
 }
-.navbar-search-icon.dot {
+.navbar-search-icon .dot {
   position: absolute;
   min-width: 10px;
   min-height: 10px;
@@ -55,6 +89,21 @@
   border-radius: 5px;
   top: -8px;
   right: -8px;
+}
+.navbar-profile {
+  position: relative;
+}
+.nav-profile-dropdown {
+  position: absolute;
+  display: none;
+  right: 0;
+  z-index: 1;
+}
+.navbar-profile:hover .nav-profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff2ef;
 }
 /* to make it responsive after all css dddddddddddddddddddddne chk to responsive */
 @media (max-width: 1050px) {
