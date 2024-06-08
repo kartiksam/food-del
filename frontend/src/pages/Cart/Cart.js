@@ -3,7 +3,7 @@ import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { Link } from "react-router-dom";
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url } =
     useContext(StoreContext);
   return (
     <div className="cart">
@@ -25,7 +25,7 @@ const Cart = () => {
             return (
               <div>
                 <div className="cart_items_title cart_items_item">
-                  <img src={item.image} alt=""></img>
+                  <img src={url + "/images/" + item.image} alt=""></img>
                   <p>{item.name}</p>
                   <p>${item.price}</p>
                   <p>{cartItems[item._id]}</p>

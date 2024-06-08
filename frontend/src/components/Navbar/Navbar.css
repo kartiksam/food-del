@@ -26,7 +26,7 @@
   cursor: pointer;
 }
 
-.navbar-menu li.active {
+.navbar-menu li .active {
   text-decoration: underline;
 }
 
@@ -70,7 +70,7 @@
 }
 
 /* underline efect */
-.navbar.active {
+.navbar .active {
   padding-bottom: 2px;
   border-bottom: 2px solid #49557e;
 }

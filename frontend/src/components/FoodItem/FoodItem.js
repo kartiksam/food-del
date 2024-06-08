@@ -6,11 +6,16 @@ const FoodItem = ({ id, name, price, description, image }) => {
   //here all works exclded - div not decided as many div can use
   //const [itemCount, setItemCount] = useState(0);
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+  const url = "http://localhost:4000";
   return (
     // need to give full css to edit cart this is like a cart
     <div className="food_item">
       <div className="food_item_img_container">
-        <img className="food_item_image" src={image} alt="fooditemimage" />
+        <img
+          className="food_item_image"
+          src={url + "/images/" + image}
+          alt="fooditemimage"
+        />
 
         {
           // if our food item count is zero in that case provide add btn and if not then other this not work like if we add one item to one photo then all rewmove plus sign only from that imevery cart has diff signs

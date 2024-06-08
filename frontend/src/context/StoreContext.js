@@ -1,6 +1,8 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { food_list } from "../assets/assets";
+//import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
+const url = "http://localhost:4000";
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
@@ -27,6 +29,25 @@ const StoreContextProvider = (props) => {
     }
     return totalAmount;
   };
+  // to prevent from when we refresh the page the user will noit logout after once login
+  useEffect(() => {
+    async function loadData() {
+      await fetchFoodList();
+      if (localStorage.getItem("token")) {
+        setToken(localStorage.getItem("token"));
+      }
+    }
+    loadData();
+  }, []);
+  const [food_list, setFoodList] = useState([]);
+  // will run this fun whenever web page loaded
+  const fetchFoodList = async () => {
+    const response = await axios.get(url + "/api/food/list");
+    console.log("response" + response);
+    setFoodList(response.data.data);
+  };
+  // here not added anydata to it so empty before that hardcoded so will create a function and call api to fetch data and dispay there
+
   // useEffect(() => {
   //   console.log(cartItems);
   // }, [cartItems]);
@@ -41,6 +62,7 @@ const StoreContextProvider = (props) => {
 
     token,
     setToken,
+    url,
   };
   return (
     <StoreContext.Provider value={contextValue}>
