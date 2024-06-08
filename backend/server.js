@@ -8,6 +8,7 @@ import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
 // to support env file
 import "dotenv/config";
+import cartRouter from "./routes/cartRoute.js";
 //app config
 const app = express();
 const port = 4000;
@@ -25,6 +26,7 @@ connnectDB();
 
 app.use("/api/food", foodRouter);
 app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
 //mount the folder in this endpoint insert anyfile in this folder and use that using this url images and filename-localhost:4000/images/filename
 app.use("/images", express.static("uploads"));
 
