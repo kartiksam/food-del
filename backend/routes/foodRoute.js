@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
-// this iamge is the name opf property in db
+// this iamge is the name opf property in db and this is  middleare for uploadinmg image
 foodRouter.post("/add", upload.single("image"), addFood);
 foodRouter.get("/list", listFood);
 foodRouter.post("/remove", removeFood);

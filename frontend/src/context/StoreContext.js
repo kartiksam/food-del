@@ -7,16 +7,32 @@ const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
   const [token, setToken] = useState("");
-  const addToCart = (itemId) => {
+  const addToCart = async (itemId) => {
     //if adding the product first time in the cart
+    // this logic is for frontend when add come into obj and us that to displpay
     if (!cartItems[itemId]) {
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
     } else {
       setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
     }
+    // this is only to add data in the backend
+    if (token) {
+      await axios.post(
+        url + "/api/cart/add",
+        { itemId },
+        { headers: { token } }
+      );
+    }
   };
-  const removeFromCart = (itemId) => {
+  const removeFromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+    if (token) {
+      await axios.post(
+        url + "/api/cart/remove",
+        { itemId },
+        { headers: { token } }
+      );
+    }
   };
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -35,6 +51,8 @@ const StoreContextProvider = (props) => {
       await fetchFoodList();
       if (localStorage.getItem("token")) {
         setToken(localStorage.getItem("token"));
+        // token is the key name
+        await loadCartData(localStorage.getItem("token"));
       }
     }
     loadData();
@@ -45,6 +63,15 @@ const StoreContextProvider = (props) => {
     const response = await axios.get(url + "/api/food/list");
     console.log("response" + response);
     setFoodList(response.data.data);
+  };
+  const loadCartData = async (token) => {
+    const response = await axios.get(
+      url + "/api/cart/get",
+
+      { headers: { token } }
+    );
+    //previoult was hardcode now come from database and then display thta
+    setCartItems(response.data.cartData);
   };
   // here not added anydata to it so empty before that hardcoded so will create a function and call api to fetch data and dispay there
 
