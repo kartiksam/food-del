@@ -13,11 +13,11 @@ const Verify = () => {
     console.log("URL:", url);
     console.log("Success:", success);
     console.log("Order ID:", orderId);
-    const response = await axios.post(url + "api/order/verify", {
+    const response = await axios.post(url + "/api/order/verify", {
       success,
       orderId,
     });
-    if (response.data.success) {
+    if (response.data.successs) {
       navigate("/myorders");
     } else {
       navigate("/");

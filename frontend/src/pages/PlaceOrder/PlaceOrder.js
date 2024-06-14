@@ -191,6 +191,7 @@ const PlaceOrder = () => {
     let orderItems = [];
     food_list.forEach((item) => {
       if (cartItems[item._id] > 0) {
+        // or item_info=item and item_info.quantity=cartItems[item._id]
         let item_info = { ...item, quantity: cartItems[item._id] };
         orderItems.push(item_info);
       }
