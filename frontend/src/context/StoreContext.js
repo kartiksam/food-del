@@ -7,6 +7,7 @@ const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
   const [token, setToken] = useState("");
+  const [food_list, setFoodList] = useState([]);
   const addToCart = async (itemId) => {
     //if adding the product first time in the cart
     // this logic is for frontend when add come into obj and us that to displpay
@@ -57,7 +58,7 @@ const StoreContextProvider = (props) => {
     }
     loadData();
   }, []);
-  const [food_list, setFoodList] = useState([]);
+
   // will run this fun whenever web page loaded
   const fetchFoodList = async () => {
     const response = await axios.get(url + "/api/food/list");
