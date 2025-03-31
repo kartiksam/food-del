@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './PlaceOrder.css';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 import { API_URL } from '../../config';
 
 const PlaceOrder = () => {
-  const { getTotalCartAmount, token, food_list, cartItems, url } = useContext(StoreContext);
+  const { getTotalCartAmount, token, food_list, cartItems } = useContext(StoreContext);
   const [data, setData] = useState({
     firstName: '',
     lastName: '',
@@ -45,95 +45,96 @@ const PlaceOrder = () => {
       if (response.data.success) {
         const { session_url } = response.data;
         window.location.replace(session_url);
+      } else {
+        alert('Error');
       }
     } catch (error) {
       console.error('Error placing order:', error);
-      alert('An error occurred while placing the order.');
+      alert('Error placing order');
     }
   };
 
   return (
-    <form className="place-order" onSubmit={placeOrder}>
+    <form onSubmit={placeOrder} className="place-order">
       <div className="place-left">
         <p className="title">Delivery Information</p>
         <div className="multifields">
           <input
+            required
             name="firstName"
             onChange={onChangeHandler}
-            placeholder="First Name"
-            required
-            type="text"
             value={data.firstName}
+            type="text"
+            placeholder="First Name"
           />
-
           <input
             name="lastName"
-            onChange={onChangeHandler}
-            placeholder="Last Name"
             required
-            type="text"
+            onChange={onChangeHandler}
             value={data.lastName}
+            type="text"
+            placeholder="Last Name"
           />
         </div>
         <input
+          required
           name="email"
           onChange={onChangeHandler}
-          placeholder="Email address"
-          required
-          type="email"
           value={data.email}
+          type="email"
+          placeholder="Email address"
         />
         <input
+          required
           name="street"
           onChange={onChangeHandler}
-          placeholder="Street"
-          required
-          type="text"
           value={data.street}
+          type="text"
+          placeholder="Street"
         />
         <div className="multifields">
           <input
+            required
             name="city"
             onChange={onChangeHandler}
-            placeholder="City"
-            required
-            type="text"
             value={data.city}
+            type="text"
+            placeholder="City"
           />
           <input
+            required
             name="state"
             onChange={onChangeHandler}
-            placeholder="State"
-            required
-            type="text"
             value={data.state}
+            type="text"
+            placeholder="State"
           />
         </div>
         <div className="multifields">
           <input
+            required
             name="zipcode"
             onChange={onChangeHandler}
-            placeholder="Zip code"
-            required
-            type="text"
             value={data.zipcode}
+            type="text"
+            placeholder="Zip code"
           />
           <input
+            required
             name="country"
             onChange={onChangeHandler}
-            placeholder="Country"
-            required
-            type="text"
             value={data.country}
+            type="text"
+            placeholder="Country"
           />
         </div>
         <input
+          required
           name="phone"
           onChange={onChangeHandler}
-          placeholder="Phone"
-          required
-          type="text"
           value={data.phone}
+          type="text"
+          placeholder="Phone"
         />
       </div>
       <div className="place-right">

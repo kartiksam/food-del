@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import './FoodDisplay.css';
 import { StoreContext } from '../../context/StoreContext';
 import FoodItem from '../FoodItem/FoodItem';
@@ -14,12 +15,12 @@ const FoodDisplay = ({ category }) => {
           if (category === 'all' || category === item.category) {
             return (
               <FoodItem
-                description={item.description}
-                id={item._id}
-                image={item.image}
                 key={index}
+                id={item._id}
                 name={item.name}
+                description={item.description}
                 price={item.price}
+                image={item.image}
               />
             );
           }
@@ -28,6 +29,10 @@ const FoodDisplay = ({ category }) => {
       </div>
     </div>
   );
+};
+
+FoodDisplay.propTypes = {
+  category: PropTypes.string.isRequired,
 };
 
 export default FoodDisplay;

@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import './Verify.css';
+import React, { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 import { API_URL } from '../../config';
+import './Verify.css';
 
 const Verify = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const success = searchParams.get('success');
   const orderId = searchParams.get('orderId');
   const navigate = useNavigate();
@@ -35,7 +34,7 @@ const Verify = () => {
       console.error('Missing required parameters.');
       navigate('/');
     }
-  }, [success, orderId]);
+  }, [success, orderId, navigate]);
 
   return (
     <div className="verify">

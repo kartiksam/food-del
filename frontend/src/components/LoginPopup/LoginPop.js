@@ -1,9 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import './LoginPopup.css';
 import { assets } from '../../assets/assets';
 import axios from 'axios';
 import { StoreContext } from '../../context/StoreContext';
 import { API_URL } from '../../config';
+import { toast } from 'react-hot-toast';
 
 const LoginPop = ({ setShowLogin }) => {
   const { token, setToken } = useContext(StoreContext);
@@ -32,17 +34,14 @@ const LoginPop = ({ setShowLogin }) => {
         setToken(response.data.token);
         localStorage.setItem('token', response.data.token);
         setShowLogin(false);
+        toast.success(currState === 'Login' ? 'Login Successful' : 'Register Successful');
       } else {
-        alert(response.data.message);
+        toast.error(response.data.message);
       }
     } catch (error) {
-      // ... error handling ...
+      toast.error('An error occurred');
     }
   };
-  // whenevr data change this will print on console
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
   return (
     <div className="login" id="login">
       <form className="login-popup-container" onSubmit={onLogin}>
@@ -100,6 +99,10 @@ const LoginPop = ({ setShowLogin }) => {
       </form>
     </div>
   );
+};
+
+LoginPop.propTypes = {
+  setShowLogin: PropTypes.func.isRequired,
 };
 
 export default LoginPop;
