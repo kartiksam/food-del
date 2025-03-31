@@ -22,7 +22,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://food-delivery-backend-75wj.onrender.com",
+      "https://67eae341c59a770008f47485--food-del-front.netlify.app",
+      "https://food-del-front.netlify.app",
     ],
     credentials: true,
   })
