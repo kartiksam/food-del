@@ -20,9 +20,10 @@ const FoodDisplay = ({ category }) => {
                 description={item.description}
                 price={item.price}
                 image={item.image}
-              ></FoodItem>
+              />
             );
           }
+          return null; // Return null for non-matching categories
         })}
       </div>
     </div>
