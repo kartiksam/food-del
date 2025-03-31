@@ -3,6 +3,9 @@ import './Navbar.css';
 import { assets } from '../../assets/assets';
 import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
+import PropTypes from 'prop-types';
+import { toast } from 'react-hot-toast';
+
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState('home');
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
@@ -10,7 +13,8 @@ const Navbar = ({ setShowLogin }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
-    setToken('');
+    setToken(null);
+    toast.success('Logged out successfully');
     // when user logoout sent to homepage
     navigate('/');
   };
@@ -67,6 +71,10 @@ const Navbar = ({ setShowLogin }) => {
       </div>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  setShowLogin: PropTypes.func.isRequired,
 };
 
 export default Navbar;

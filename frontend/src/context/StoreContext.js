@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { API_URL } from '../config';
 //import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
 
-const StoreContextProvider = (props) => {
+const StoreContextProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState({});
 
   const [token, setToken] = useState('');
@@ -85,6 +86,11 @@ const StoreContextProvider = (props) => {
     setToken,
     url: API_URL,
   };
-  return <StoreContext.Provider value={contextValue}>{props.children}</StoreContext.Provider>;
+  return <StoreContext.Provider value={contextValue}>{children}</StoreContext.Provider>;
 };
+
+StoreContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 export default StoreContextProvider;

@@ -8,11 +8,14 @@ import Footer from './components/Footer/Footer';
 import LoginPop from './components/LoginPopup/LoginPop';
 import Verify from './pages/Verify/Verify';
 import MyOrder from './pages/MyOrders/MyOrder';
+import { Toaster } from 'react-hot-toast';
+
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
     <>
+      <Toaster position="top-center" />
       {showLogin ? <LoginPop setShowLogin={setShowLogin} /> : <></>}
       <div className="app">
         <Navbar setShowLogin={setShowLogin}></Navbar>

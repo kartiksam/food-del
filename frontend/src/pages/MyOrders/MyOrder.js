@@ -31,8 +31,8 @@ const MyOrder = () => {
       <h2>My Orders</h2>
       <div className="order">
         {data.map((order, index) => (
-          <div key={index} className="order-item">
-            <img src={assets.rating_starts} alt="Rating" />
+          <div className="order-item" key={index}>
+            <img alt="Rating" src={assets.rating_starts} />
             <p>{order.items.map((item) => item.name).join(', ')}</p>
             <p>${order.amount}</p>
             <p>{order.status}</p>

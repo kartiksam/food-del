@@ -8,7 +8,7 @@ import { API_URL } from '../../config';
 import { toast } from 'react-hot-toast';
 
 const LoginPop = ({ setShowLogin }) => {
-  const { token, setToken } = useContext(StoreContext);
+  const { setToken } = useContext(StoreContext);
   const [currState, setCurrState] = useState('Login');
   const [data, setData] = useState({
     name: '',
