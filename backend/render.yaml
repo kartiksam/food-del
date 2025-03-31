@@ -2,7 +2,7 @@ services:
   - type: web
     name: food-delivery-backend
     env: node
-    buildCommand: npm install
+    buildCommand: npm install --production
     startCommand: node server.js
     envVars:
       - key: MONGODB_URI
@@ -11,3 +11,5 @@ services:
         sync: false
       - key: PORT
         value: 4000
+      - key: NODE_ENV
+        value: production
