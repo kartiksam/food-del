@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../config';
@@ -10,7 +10,7 @@ const Verify = () => {
   const orderId = searchParams.get('orderId');
   const navigate = useNavigate();
 
-  const verifyPayment = async () => {
+  const verifyPayment = useCallback(async () => {
     try {
       const response = await axios.post(API_URL + '/api/order/verify', {
         success,
@@ -25,7 +25,7 @@ const Verify = () => {
       console.error('Error verifying payment:', error);
       navigate('/');
     }
-  };
+  }, [success, orderId, navigate]);
 
   useEffect(() => {
     if (success !== null && orderId !== null) {
@@ -34,7 +34,7 @@ const Verify = () => {
       console.error('Missing required parameters.');
       navigate('/');
     }
-  }, [success, orderId, navigate]);
+  }, [success, orderId, navigate, verifyPayment]);
 
   return (
     <div className="verify">
