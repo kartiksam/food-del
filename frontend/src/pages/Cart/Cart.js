@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import "./Cart.css";
-import { StoreContext } from "../../context/StoreContext";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import './Cart.css';
+import { StoreContext } from '../../context/StoreContext';
+import { Link } from 'react-router-dom';
 const Cart = () => {
   const { cartItems, food_list, removeFromCart, getTotalCartAmount, url } =
     useContext(StoreContext);
@@ -25,12 +25,12 @@ const Cart = () => {
             return (
               <div>
                 <div className="cart_items_title cart_items_item">
-                  <img src={url + "/images/" + item.image} alt=""></img>
+                  <img alt="" src={url + '/images/' + item.image}></img>
                   <p>{item.name}</p>
                   <p>${item.price}</p>
                   <p>{cartItems[item._id]}</p>
                   <p>${item.price * cartItems[item._id]}</p>
-                  <p onClick={() => removeFromCart(item._id)} className="cross">
+                  <p className="cross" onClick={() => removeFromCart(item._id)}>
                     x
                   </p>
                 </div>
@@ -68,7 +68,7 @@ const Cart = () => {
           <div>
             <p>If you have a promo code, Enter it here</p>
             <div className="cart-promocode-input">
-              <input type="text" placeholder="promo-code"></input>
+              <input placeholder="promo-code" type="text"></input>
               <button>Submit</button>
             </div>
           </div>

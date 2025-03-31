@@ -1,17 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
-import "./LoginPopup.css";
-import { assets } from "../../assets/assets";
-import axios from "axios";
-import { StoreContext } from "../../context/StoreContext";
-import { API_URL } from "../../config";
+import React, { useContext, useEffect, useState } from 'react';
+import './LoginPopup.css';
+import { assets } from '../../assets/assets';
+import axios from 'axios';
+import { StoreContext } from '../../context/StoreContext';
+import { API_URL } from '../../config';
 
 const LoginPop = ({ setShowLogin }) => {
   const { token, setToken } = useContext(StoreContext);
-  const [currState, setCurrState] = useState("Login");
+  const [currState, setCurrState] = useState('Login');
   const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   });
   const onChangeHandler = (event) => {
     const name = event.target.name;
@@ -21,16 +21,16 @@ const LoginPop = ({ setShowLogin }) => {
   const onLogin = async (event) => {
     event.preventDefault();
     let newUrl = API_URL;
-    if (currState === "Login") {
-      newUrl += "/api/user/login";
+    if (currState === 'Login') {
+      newUrl += '/api/user/login';
     } else {
-      newUrl += "/api/user/register";
+      newUrl += '/api/user/register';
     }
     try {
       const response = await axios.post(newUrl, data);
       if (response.data.success) {
         setToken(response.data.token);
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem('token', response.data.token);
         setShowLogin(false);
       } else {
         alert(response.data.message);
@@ -48,59 +48,53 @@ const LoginPop = ({ setShowLogin }) => {
       <form className="login-popup-container" onSubmit={onLogin}>
         <div className="login-popup-title">
           <h2>{currState}</h2>
-          <img
-            onClick={() => setShowLogin(false)}
-            src={assets.cross_icon}
-            alt=""
-          ></img>
+          <img alt="" onClick={() => setShowLogin(false)} src={assets.cross_icon}></img>
         </div>
         <div className="login-popup-inputs">
-          {currState === "Login" ? (
+          {currState === 'Login' ? (
             <></>
           ) : (
             <input
-              type="text"
               name="name"
               onChange={onChangeHandler}
-              value={data.name}
               placeholder="Your Name"
               required
+              type="text"
+              value={data.name}
             />
           )}
           <input
-            type="email"
             name="email"
             onChange={onChangeHandler}
-            value={data.email}
             placeholder="Your Email"
             required
+            type="email"
+            value={data.email}
           />
           <input
-            type="password"
-            onChange={onChangeHandler}
-            value={data.password}
             name="password"
+            onChange={onChangeHandler}
             placeholder="Password"
             required
+            type="password"
+            value={data.password}
           />
         </div>
-        <button type="submit">
-          {currState === "Sign Up" ? "Create Account" : "Login"}
-        </button>
+        <button type="submit">{currState === 'Sign Up' ? 'Create Account' : 'Login'}</button>
         <div className="login-popup-condition">
-          <input type="checkbox" required />
+          <input required type="checkbox" />
           <p>By continuing, i agree to the terms of use & privacy policy</p>
         </div>
-        {currState === "Login" ? (
+        {currState === 'Login' ? (
           <p>
             Create a new account?
-            <span onClick={() => setCurrState("Sign Up")}>Click here</span>
+            <span onClick={() => setCurrState('Sign Up')}>Click here</span>
           </p>
         ) : (
           // we can apply on click on anything like img text and others or <Link to=route> on anything we click go to that route
           <p>
             Already have an account?
-            <span onClick={() => setCurrState("Login")}>Login here</span>
+            <span onClick={() => setCurrState('Login')}>Login here</span>
           </p>
         )}
       </form>

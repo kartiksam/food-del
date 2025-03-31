@@ -1,60 +1,48 @@
-import React, { useContext, useState } from "react";
-import "./Navbar.css";
-import { assets } from "../../assets/assets";
-import { Link, useNavigate } from "react-router-dom";
-import { StoreContext } from "../../context/StoreContext";
+import React, { useContext, useState } from 'react';
+import './Navbar.css';
+import { assets } from '../../assets/assets';
+import { Link, useNavigate } from 'react-router-dom';
+import { StoreContext } from '../../context/StoreContext';
 const Navbar = ({ setShowLogin }) => {
-  const [menu, setMenu] = useState("home");
+  const [menu, setMenu] = useState('home');
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
   const navigate = useNavigate();
 
   const logout = () => {
-    localStorage.removeItem("token");
-    setToken("");
+    localStorage.removeItem('token');
+    setToken('');
     // when user logoout sent to homepage
-    navigate("/");
+    navigate('/');
   };
 
   return (
     <div className="navbar">
       {/* either here also can use div classname =left but anyhow */}
       <Link to="/">
-        <img src={assets.logo} alt="logo " className="logo"></img>
+        <img alt="logo " className="logo" src={assets.logo}></img>
       </Link>
       <ul className="navbar-menu">
         {/* to make underline in one of at a time so that snd chnhe using set functiononClick={()=>setMenu("home")} */}
-        <li
-          onClick={() => setMenu("home")}
-          className={menu === "home" ? "active" : ""}
-        >
+        <li className={menu === 'home' ? 'active' : ''} onClick={() => setMenu('home')}>
           home
         </li>
-        <li
-          onClick={() => setMenu("menu")}
-          className={menu === "menu" ? "active" : ""}
-        >
+        <li className={menu === 'menu' ? 'active' : ''} onClick={() => setMenu('menu')}>
           menu
         </li>
-        <li
-          onClick={() => setMenu("mobile-app")}
-          className={menu === "mobile-app" ? "active" : ""}
-        >
+        <li className={menu === 'mobile-app' ? 'active' : ''} onClick={() => setMenu('mobile-app')}>
           mobile-app
         </li>
-        <li
-          onClick={() => setMenu("contact us")}
-          className={menu === "contact us" ? "active" : ""}
-        >
+        <li className={menu === 'contact us' ? 'active' : ''} onClick={() => setMenu('contact us')}>
           contact us
         </li>
       </ul>
       <div className="right">
-        <img src={assets.search_icon} alt="search"></img>
+        <img alt="search" src={assets.search_icon}></img>
         <div className="navbar-search-icon">
           <Link to="/cart">
-            <img src={assets.basket_icon} alt="basket"></img>
+            <img alt="basket" src={assets.basket_icon}></img>
           </Link>
-          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+          <div className={getTotalCartAmount() === 0 ? '' : 'dot'}></div>
         </div>
         {/* or wqe can do onclicl={fnname}or {()=>fnname(arg)} or {()=>setshowlogin(arg)=>arg+1} or apply <Link to="/login" anmd in app.js define login rpoute and open this componentr  */}
         {/* here is logic for if we have token then remove signib tn and show user profile there */}
@@ -62,15 +50,15 @@ const Navbar = ({ setShowLogin }) => {
           <button onClick={() => setShowLogin(true)}>sign in</button>
         ) : (
           <div className="navbar-profile">
-            <img src={assets.profile_icon} alt="profile link"></img>
+            <img alt="profile link" src={assets.profile_icon}></img>
             <ul className="nav-profile-dropdown">
               <li>
-                <img src={assets.bag_icon} alt="bagicon"></img>
+                <img alt="bagicon" src={assets.bag_icon}></img>
                 <p>Orders</p>
               </li>
               <hr />
               <li onClick={logout}>
-                <img src={assets.logout_icon} alt="logouticon"></img>
+                <img alt="logouticon" src={assets.logout_icon}></img>
                 <p>Logout</p>
               </li>
             </ul>

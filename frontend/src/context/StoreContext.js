@@ -1,13 +1,13 @@
-import axios from "axios";
-import { createContext, useEffect, useState } from "react";
-import { API_URL } from "../config";
+import axios from 'axios';
+import { createContext, useEffect, useState } from 'react';
+import { API_URL } from '../config';
 //import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState('');
   const [food_list, setFoodList] = useState([]);
   const addToCart = async (itemId) => {
     //if adding the product first time in the cart
@@ -19,21 +19,13 @@ const StoreContextProvider = (props) => {
     }
     // this is only to add data in the backend
     if (token) {
-      await axios.post(
-        API_URL + "/api/cart/add",
-        { itemId },
-        { headers: { token } }
-      );
+      await axios.post(API_URL + '/api/cart/add', { itemId }, { headers: { token } });
     }
   };
   const removeFromCart = async (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (token) {
-      await axios.post(
-        API_URL + "/api/cart/remove",
-        { itemId },
-        { headers: { token } }
-      );
+      await axios.post(API_URL + '/api/cart/remove', { itemId }, { headers: { token } });
     }
   };
   const getTotalCartAmount = () => {
@@ -51,10 +43,10 @@ const StoreContextProvider = (props) => {
   useEffect(() => {
     async function loadData() {
       await fetchFoodList();
-      if (localStorage.getItem("token")) {
-        setToken(localStorage.getItem("token"));
+      if (localStorage.getItem('token')) {
+        setToken(localStorage.getItem('token'));
         // token is the key name
-        await loadCartData(localStorage.getItem("token"));
+        await loadCartData(localStorage.getItem('token'));
       }
     }
     loadData();
@@ -62,13 +54,13 @@ const StoreContextProvider = (props) => {
 
   // will run this fun whenever web page loaded
   const fetchFoodList = async () => {
-    const response = await axios.get(API_URL + "/api/food/list");
-    console.log("response" + response);
+    const response = await axios.get(API_URL + '/api/food/list');
+    console.log('response' + response);
     setFoodList(response.data.data);
   };
   const loadCartData = async (token) => {
     const response = await axios.get(
-      API_URL + "/api/cart/get",
+      API_URL + '/api/cart/get',
 
       { headers: { token } }
     );
@@ -93,10 +85,6 @@ const StoreContextProvider = (props) => {
     setToken,
     url: API_URL,
   };
-  return (
-    <StoreContext.Provider value={contextValue}>
-      {props.children}
-    </StoreContext.Provider>
-  );
+  return <StoreContext.Provider value={contextValue}>{props.children}</StoreContext.Provider>;
 };
 export default StoreContextProvider;

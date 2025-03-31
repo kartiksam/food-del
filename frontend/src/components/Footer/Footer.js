@@ -1,21 +1,20 @@
-import React from "react";
-import "./Footer.css";
-import { assets } from "../../assets/assets";
+import React from 'react';
+import './Footer.css';
+import { assets } from '../../assets/assets';
 const Footer = () => {
   return (
     <div className="footer">
       <div className="footer_left">
-        <img src={assets.logo} alt="logo " className="logo"></img>
+        <img alt="logo " className="logo" src={assets.logo}></img>
         <p>
-          Choose from a diverse menu featuring a delectable array of dishes
-          crafted with the finest ingredients and culinary expertise. Our
-          mission is to satisfy your cravings and elevate your dining
-          experience, one delicious meal at a time.
+          Choose from a diverse menu featuring a delectable array of dishes crafted with the finest
+          ingredients and culinary expertise. Our mission is to satisfy your cravings and elevate
+          your dining experience, one delicious meal at a time.
         </p>
         <div className="logos">
-          <img src={assets.facebook_icon} alt="" />
-          <img src={assets.linkedin_icon} alt="" />
-          <img src={assets.twitter_icon} alt="" />
+          <img alt="" src={assets.facebook_icon} />
+          <img alt="" src={assets.linkedin_icon} />
+          <img alt="" src={assets.twitter_icon} />
         </div>
       </div>
       <div className="middle">
