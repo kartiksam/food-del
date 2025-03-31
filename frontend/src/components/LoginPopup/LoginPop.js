@@ -3,8 +3,9 @@ import "./LoginPopup.css";
 import { assets } from "../../assets/assets";
 import axios from "axios";
 import { StoreContext } from "../../context/StoreContext";
+import { API_URL } from "../../config";
+
 const LoginPop = ({ setShowLogin }) => {
-  const url = "http://localhost:4000";
   const { token, setToken } = useContext(StoreContext);
   const [currState, setCurrState] = useState("Login");
   const [data, setData] = useState({
@@ -19,19 +20,23 @@ const LoginPop = ({ setShowLogin }) => {
   };
   const onLogin = async (event) => {
     event.preventDefault();
-    let newUrl = url;
+    let newUrl = API_URL;
     if (currState === "Login") {
       newUrl += "/api/user/login";
     } else {
       newUrl += "/api/user/register";
     }
-    const response = await axios.post(newUrl, data);
-    if (response.data.success) {
-      setToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
-      setShowLogin(false);
-    } else {
-      alert(response.data.message);
+    try {
+      const response = await axios.post(newUrl, data);
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
+        setShowLogin(false);
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      // ... error handling ...
     }
   };
   // whenevr data change this will print on console

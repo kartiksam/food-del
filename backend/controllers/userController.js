@@ -2,6 +2,7 @@ import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import validator from "validator";
+import cors from "cors";
 
 //login user
 const loginUser = async (req, res) => {
@@ -68,3 +69,10 @@ const registerUser = async (req, res) => {
   }
 };
 export { loginUser, registerUser };
+
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000";
+
+const corsHandler = cors({
+  origin: ["https://your-netlify-site.netlify.app", "http://localhost:3000"],
+  credentials: true,
+});

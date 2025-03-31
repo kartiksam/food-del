@@ -1,8 +1,9 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { API_URL } from "../config";
 //import { food_list } from "../assets/assets";
 export const StoreContext = createContext(null);
-const url = "http://localhost:4000";
+
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
@@ -19,7 +20,7 @@ const StoreContextProvider = (props) => {
     // this is only to add data in the backend
     if (token) {
       await axios.post(
-        url + "/api/cart/add",
+        API_URL + "/api/cart/add",
         { itemId },
         { headers: { token } }
       );
@@ -29,7 +30,7 @@ const StoreContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (token) {
       await axios.post(
-        url + "/api/cart/remove",
+        API_URL + "/api/cart/remove",
         { itemId },
         { headers: { token } }
       );
@@ -61,13 +62,13 @@ const StoreContextProvider = (props) => {
 
   // will run this fun whenever web page loaded
   const fetchFoodList = async () => {
-    const response = await axios.get(url + "/api/food/list");
+    const response = await axios.get(API_URL + "/api/food/list");
     console.log("response" + response);
     setFoodList(response.data.data);
   };
   const loadCartData = async (token) => {
     const response = await axios.get(
-      url + "/api/cart/get",
+      API_URL + "/api/cart/get",
 
       { headers: { token } }
     );
@@ -90,7 +91,7 @@ const StoreContextProvider = (props) => {
 
     token,
     setToken,
-    url,
+    url: API_URL,
   };
   return (
     <StoreContext.Provider value={contextValue}>

@@ -3,17 +3,23 @@ import "./MyOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
 import { assets } from "../../assets/assets";
+import { API_URL } from "../../config";
+
 const MyOrder = () => {
   const [data, setData] = useState([]);
   const { url, token } = useContext(StoreContext);
   const fetchOrders = async () => {
-    const response = await axios.post(
-      url + "/api/order/userorder",
-      {},
-      { headers: { token } }
-    );
-    setData(response.data.data);
-    //console.log(response.data.data);
+    try {
+      const response = await axios.post(
+        API_URL + "/api/order/userorders",
+        {},
+        { headers: { token } }
+      );
+      setData(response.data.data);
+      //console.log(response.data.data);
+    } catch (error) {
+      // ... error handling ...
+    }
   };
   //   need to call this function oir api whenever this component will be loaded
   useEffect(() => {

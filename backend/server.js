@@ -18,7 +18,15 @@ const port = process.env.PORT || 4000;
 //1-To parse data from frontend to backend
 app.use(express.json());
 //2-access backend from any frontend
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://food-delivery-backend-75wj.onrender.com",
+    ],
+    credentials: true,
+  })
+);
 
 //db connection
 connnectDB();

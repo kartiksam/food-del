@@ -3,33 +3,40 @@ import "./Verify.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
+import { API_URL } from "../../config";
+
 const Verify = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const success = searchParams.get("success");
   const orderId = searchParams.get("orderId");
-  const { url } = useContext(StoreContext);
   const navigate = useNavigate();
+
   const verifyPayment = async () => {
-    console.log("URL:", url);
-    console.log("Success:", success);
-    console.log("Order ID:", orderId);
-    const response = await axios.post(url + "/api/order/verify", {
-      success,
-      orderId,
-    });
-    if (response.data.successs) {
-      navigate("/myorders");
-    } else {
+    try {
+      const response = await axios.post(API_URL + "/api/order/verify", {
+        success,
+        orderId,
+      });
+      if (response.data.success) {
+        navigate("/myorders");
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error verifying payment:", error);
       navigate("/");
     }
   };
+
   useEffect(() => {
-    if (url && success !== null && orderId !== null) {
+    if (success !== null && orderId !== null) {
       verifyPayment();
     } else {
       console.error("Missing required parameters.");
+      navigate("/");
     }
-  }, [url, success, orderId]);
+  }, [success, orderId]);
+
   return (
     <div className="verify">
       <div className="spinner"></div>
